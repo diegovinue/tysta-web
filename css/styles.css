@@ -1,0 +1,24 @@
+/* Declarar Avenir Next */
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('../assets/fonts/AvenirNextLTPro-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Declarar Funnel Display (Variable) */
+@font-face {
+    font-family: 'FunnelDisplay';
+    src: url('../assets/fonts/FunnelDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900; /* Esto permite usar cualquier peso desde Thin a Black */
+    font-style: normal;
+}
+
+/* Aplicarlas al cuerpo de la web */
+body {
+    font-family: 'AvenirNext', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'FunnelDisplay', sans-serif;
+}
