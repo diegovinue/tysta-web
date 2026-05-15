@@ -1,4 +1,94 @@
-/* Declarar Avenir Next */
+/* ==========================================
+   1. RESET Y CONFIGURACIÓN GLOBAL
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Para que el padding no afecte al ancho total */
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave entre secciones */
+    font-size: 16px; /* Definimos la base: 1rem = 16px */
+}
+
+body {
+    background-color: var(--blanco-puro);
+    color: var(--negro-mate);
+    /* Suavizado de tipografía para que se vea premium */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'AvenirNext', sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden; /* Evita que la web se mueva hacia los lados */
+}
+
+/* ==========================================
+   2. VARIABLES DE DISEÑO (Design Tokens)
+   ========================================== */
+:root {
+    /* --- PALETA CROMÁTICA --- */
+    
+    /* Negros (Base y Acentos) */
+    --negro-mate: #000000;
+    --negro-acc-1: #282727;
+    --negro-acc-2: #3c3c3b;
+    --negro-acc-3: #4a4a49;
+    --negro-acc-4: #646363;
+
+    /* Blancos (Base y Acentos) */
+    --blanco-puro: #ffffff;
+    --blanco-acc-1: #f6f6f6;
+    --blanco-acc-2: #ededed;
+    --blanco-acc-3: #e3e3e3;
+    --blanco-acc-4: #d0d0d0;
+
+    /* Verdes Oliva (Base y Acentos) */
+    --verde-oliva: #6c726a;
+    --verde-acc-1: #858e84;
+    --verde-acc-2: #9ea79c;
+    --verde-acc-3: #b5bfb2;
+    --verde-acc-4: #cbd5c6;
+
+    /* --- EFECTO METÁLICO ANGULAR (Estilo acero pulido) --- */
+    --metalico-angular: conic-gradient(
+        from 135deg at 50% 50%, 
+            #bdbdbd 0deg,
+            #d4d4d4 90deg,
+            #b7b7b7 180deg,
+            #999999 270deg,
+            #bdbdbd 360deg
+        );
+
+    /* --- EFECTO METÁLICO ANGULAR (Hover - Colores Random) --- */
+        --metalico-angular-hover: conic-gradient(
+            from 135deg at 50% 50%, 
+            #ffffff 0deg,
+            #afafaf 90deg,
+            #e5e5e5 180deg,
+            #c5c5c5 270deg,
+            #ffffff 360deg
+        );
+
+    /* --- ESCALA TIPOGRÁFICA --- */
+    /* H1: Títulos principales */
+    --fs-h1: 4rem;      --lh-h1: 4rem;
+    /* Subtítulo 1 */
+    --fs-sub-1: 2rem;   --lh-sub-1: 2.5rem;
+    /* Subtítulo 2 */
+    --fs-sub-2: 1.5rem; --lh-sub-2: 2rem;
+    /* Cuerpo de texto básico */
+    --fs-body: 1rem;    --lh-body: 1.5rem;
+    /* Caption: Textos legales o muy pequeños */
+    --fs-caption: 0.75rem; --lh-caption: 1.5rem;
+
+    /* --- ESPACIADO UNIVERSAL --- */
+    --spacing-base: 1.25rem;
+}
+
+/* ==========================================
+   3. DECLARACIÓN DE FUENTES
+   ========================================== */
 @font-face {
     font-family: 'AvenirNext';
     src: url('../assets/fonts/AvenirNextLTPro-Regular.otf') format('opentype');
@@ -6,19 +96,1774 @@
     font-style: normal;
 }
 
-/* Declarar Funnel Display (Variable) */
 @font-face {
     font-family: 'FunnelDisplay';
     src: url('../assets/fonts/FunnelDisplay-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900; /* Esto permite usar cualquier peso desde Thin a Black */
-    font-style: normal;
+    font-weight: 100 900;
 }
 
-/* Aplicarlas al cuerpo de la web */
-body {
+/* ==========================================
+   4. SISTEMA TIPOGRÁFICO (CLASES)
+   ========================================== */
+
+/* Título de impacto (Hero) */
+.titulo-xl {
+    font-family: 'FunnelDisplay', sans-serif;
+    font-size: 6rem; /* El que pediste */
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Títulos de secciones principales (Showrooms, Producto...) */
+.titulo-1 {
+    font-family: 'FunnelDisplay', sans-serif;
+    font-size: var(--fs-h1); /* 4rem */
+    line-height: var(--lh-h1);
+    font-weight: 700;
+}
+
+/* Títulos secundarios o de apoyo */
+.titulo-2 {
+    font-family: 'FunnelDisplay', sans-serif;
+    font-size: var(--fs-sub-1); /* 2rem */
+    line-height: var(--lh-sub-1);
+    font-weight: 600;
+}
+
+/* Subtítulos destacados */
+.sub-1 {
+    font-family: 'AvenirNext', sans-serif;
+    font-size: var(--fs-sub-2); /* 1.5rem */
+    line-height: var(--lh-sub-2);
+    font-weight: 500;
+}
+
+/* Cuerpo de texto estándar */
+.body-1 {
+    font-family: 'AvenirNext', sans-serif;
+    font-size: var(--fs-body); /* 1rem */
+    line-height: var(--lh-body);
+}
+
+/* Texto pequeño (notas, pies de foto, legal) */
+.caption-1 {
+    font-family: 'AvenirNext', sans-serif;
+    font-size: var(--fs-caption); /* 0.75rem */
+    line-height: var(--lh-caption);
+    letter-spacing: 0.05rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*HEADER*/
+
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    position: fixed;
+    top: 20px; 
+    left: 2%;
+    right: 2%;
+    width: 96%; 
+    z-index: 1000;
+    background: var(--negro-mate); 
+    border-radius: 10rem;
+    color: var(--blanco-puro);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* --- ESTILOS DE COLOR E ICONOS --- */
+.logo-svg path, 
+.logo-svg polygon, 
+.logo-svg rect,
+.header-icon path {
+    fill: var(--blanco-puro) !important;
+    transition: fill 0.3s ease;
+}
+
+.header-left a {
+    display: inline-block; /* Necesario para que la escala funcione */
+    color: var(--blanco-puro);
+    text-decoration: none;
+    font-size: var(--fs-caption);
+    /* Transiciones de color y escala */
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.header-icon { 
+    width: 1.2rem; 
+    display: block;
+    /* Transición de escala para los iconos */
+    transition: transform 0.3s ease; 
+}
+
+/* --- ANIMACIONES HOVER --- */
+
+/* Texto izquierda: Cambia color y escala */
+.header-left a:hover {
+    color: var(--blanco-acc-4) !important;
+    transform: scale(1.1);
+}
+
+/* Logo: SOLO cambia color (sin escala) */
+.logo-link:hover .logo-svg path,
+.logo-link:hover .logo-svg polygon,
+.logo-link:hover .logo-svg rect {
+    fill: var(--blanco-acc-4) !important;
+}
+
+/* Iconos derecha: Cambia color y escala al pasar por el enlace */
+.header-right a:hover .header-icon {
+    transform: scale(1.2);
+}
+
+.header-right a:hover .header-icon path {
+    fill: var(--blanco-acc-4) !important;
+}
+
+/* --- LÓGICA DE LA MÁSCARA DEL LOGO --- */
+.logo-mask {
+    width: 215px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.logo-svg {
+    height: 100%;
+    width: 215px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.logo-text-part {
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease;
+}
+
+.logo-icon-part {
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* --- ESTADOS SCROLLED / MOBILE --- */
+.scrolled .logo-mask,
+.is-mobile .logo-mask {
+    width: 32px; 
+}
+
+.scrolled .logo-text-part,
+.is-mobile .logo-text-part {
+    transform: translateX(-150px);
+    opacity: 0;
+}
+
+.scrolled .logo-icon-part,
+.is-mobile .logo-icon-part {
+    transform: translateX(0);
+}
+
+/* --- LAYOUT DERECHA/IZQUIERDA --- */
+.header-left { display: flex; gap: 1.5rem; flex: 1; align-items: center; }
+.header-right { display: flex; justify-content: flex-end; gap: 1.5rem; flex: 1; align-items: center; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .header-left { display: none; }
+    .logo-mask { width: 32px; }
+    .logo-text-part { transform: translateX(-150px); opacity: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- CONTENEDOR HERO --- */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%-40px;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 5%;
+    /* Quitamos el isolation para que permita la mezcla entre hijos */
+}
+
+/* --- MODELO 3D (Fondo) --- */
+.hero-3d-model {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Bajamos el z-index para que esté debajo del texto */
+    z-index: 1; 
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    --poster-color: transparent;
+    background-color: transparent; /* Vital para que no bloquee la mezcla */
+}
+
+/* --- TEXTO SLOGAN --- */
+.hero-slogan {
+    position: relative;
+    z-index: 2; /* Por encima del patín */
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    /* Eliminamos cualquier propiedad que cree un nuevo contexto de apilamiento aquí */
+}
+
+.slogan-word {
+    font-family: 'FunnelDisplay', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 16rem);
+    font-weight: 300;
+    color: #fff; /* Usamos blanco puro directamente para máxima diferencia */
+    line-height: 1;
+
+    /* EL CAMBIO CLAVE */
+    mix-blend-mode: difference;
+}
+
+/* Posicionamiento en escalera (Mantenemos tu diseño) */
+.slogan-word:nth-child(1) {
+    align-self: flex-start;
+    margin-bottom: 2rem;
+}
+
+.slogan-word:nth-child(2) {
+    align-self: center;
+    margin-bottom: 2rem;
+}
+
+.slogan-word:nth-child(3) {
+    align-self: flex-end;
+}
+
+/* --- INDICADOR DE SCROLL --- */
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: bounce 2s infinite;
+}
+
+.hero-scroll-indicator img {
+    width: 2rem;
+    height: auto;
+}
+
+/* --- ANIMACIÓN PARA LA FLECHA --- */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--STATEMENT--*/
+
+.philosophy-statement {
+    /* --- CONFIGURACIÓN DE MÁRGENES --- */
+    --margin-v: 16rem;
+    --margin-h: 16rem;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--margin-v) var(--margin-h);
+    box-sizing: border-box;
+    background-color: var(--blanco-puro);
+}
+
+.container-statement {
+    max-width: 1600px;
+    width: 100%; /* Asegura que ocupe el ancho disponible */
+}
+
+.statement-text {
+    /* --- SOLUCIÓN: TAMAÑO FLUIDO --- */
+    /* Explicación: Mínimo 2rem, ideal 5vw (5% del ancho), máximo el valor de tu H1 */
+    font-size: clamp(2rem, 5vw, var(--fs-h1)); 
+    
+    /* Ajustamos el line-height para que no queden muy separadas en móvil */
+    line-height: 1.1; 
+    font-family: 'Funnel Display', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    word-wrap: break-word; /* Evita que palabras largas rompan el layout */
+}
+
+/* --- EFECTO DE RELLENO (FILL) --- */
+.statement-text.js-fill > span {
+    --text-muted: var(--blanco-acc-3);
+    --text-highlight: var(--negro-acc-4); 
+
+    display: inline;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    background-color: var(--text-muted);
+    background-image: linear-gradient(135deg, var(--text-highlight) 50%, var(--text-muted) 55%);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 0% 200%;
+    
+    will-change: background-size;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .philosophy-statement {
+        --margin-v: 10rem;
+        --margin-h: 5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .philosophy-statement {
+        /* Reducimos márgenes para que el texto tenga aire pero no se comprima */
+        --margin-v: 6rem;
+        --margin-h: 1.5rem;
+    }
+    
+    .statement-text {
+        /* Forzamos un tamaño más manejable para móviles si el clamp no fuera suficiente */
+        font-size: clamp(1.8rem, 8vw, 3rem); 
+        line-height: 1.2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- COMPONENTE BOTÓN PRINCIPAL (button-1) --- */
+
+.button-1 {
+    /* 1. Reset y Estructura */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 2. Dimensiones y Márgenes (Cámbialos a tu antojo) */
+    padding: 0.6rem 2rem;
+    margin: 0px 0; /* Margen externo para separarlo de otros elementos */
+    
+    /* 3. Colores y Bordes (Usando tu paleta) */
+    background: var(--metalico-angular);
+    border: 2px solid var(--negro-acc-4);
+    border-radius: 6rem; /* Casi recto para un look más técnico */
+    
+    /* 4. Tipografía */
+    font-family: 'AvenirNext', sans-serif;
+    font-size: var(--fs-caption, 0.75rem); 
+    line-height: var(--lh-caption, 1.5rem);
+    font-weight: 600;
+    color: var(--negro-mate);
+}
+
+/* --- CONTENEDOR DEL ICONO --- */
+.button-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem; /* Espacio entre el texto y el icono */
+    transition: transform 0.3s ease;
+}
+
+.button-icon img {
+    width: 1rem;  /* Ajusta el tamaño de tu SVG aquí */
+    height: auto;
+}
+
+/* --- EFECTOS HOVER (Al pasar el ratón) --- */
+
+.button-1:hover {
+    background: var(--metalico-angular-hover);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-1:hover .button-icon {
+    transform: translateX(5px); /* Pequeño desplazamiento técnico del icono */
+}
+
+/* --- ESTADO ACTIVO (Al hacer click) --- */
+.button-1:active {
+    transform: scale(0.95);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*PRODUCTO*/
+
+
+.product-stack-wrapper {
+    height: 600vh; /* Espacio suficiente para las 4 cartas */
+    background-color: var(--blanco-puro);
+    position: relative;
+}
+
+.product-sticky-content {
+    position: sticky;
+    top: 0;
+    height: 150vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    padding-top: 60px;
+}
+
+/* --- TÍTULO (Debajo de las cartas) --- */
+.product-header {
+    width: 100%;
+    z-index: 1; /* Capa inferior */
+    position: relative;
+}
+
+.product-title {
+    width: calc(100%);
+    margin: 0 0px;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 12vw;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.product-divider {
+    width: 90%;
+    height: 1px;
+    background-color: var(--negro-mate);
+    margin: 40px auto 0 auto;
+}
+
+/* --- LAYOUT GRID --- */
+.product-hero-container {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 0px;
+}
+
+.product-content-left {
+    padding-left: 120px;
+    padding-top: 100px;
+    z-index: 5; /* Por encima del título pero debajo de las cartas si se cruzan */
+}
+
+/* --- CONTENEDOR DE CARTAS CENTRADO --- */
+.cards-stack-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center; /* Centra la carta horizontalmente */
+    align-items: center;
+    z-index: 10; /* Capa superior (Vuela sobre el texto) */
+}
+
+.card {
+    position: absolute;
+    width: 600px; 
+    height: 700px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    
+    /* Estado inicial: Todas fuera de la pantalla por abajo */
+    transform: translateY(120vh) rotate(0deg); 
+    opacity: 0;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- BOTÓN EN LA ÚLTIMA CARTA (CENTRADO PERFECTO) --- */
+.card-button-overlay {
+    position: absolute;
+    top: 50%; /* Lo baja al centro vertical */
+    left: 50%; /* Lo mueve al centro horizontal */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* El transform asegura que el centro del botón coincida con el centro de la carta */
+    transform: translate(-50%, -50%); 
+    z-index: 15;
+}
+
+
+
+
+
+
+
+/* --- RESPONSIVE PRODUCTO --- */
+
+@media (max-width: 768px) {
+    /* 1. Ajustamos el contenedor sticky para que el contenido no se amontone */
+    .product-sticky-content {
+        height: 100vh; /* Bajamos de 150vh a 100vh en móvil */
+        padding-top: 40px;
+    }
+
+    /* 2. El título gigante debe escalar con la pantalla */
+    .product-title {
+        font-size: 18vw; /* Un poco más grande para que impacte en móvil */
+        white-space: normal; /* Permitimos que rompa en dos líneas si es necesario */
+        line-height: 0.9;
+        padding: 0 10px;
+    }
+
+    /* 3. Cambiamos el Grid de 2 columnas a 1 columna */
+    .product-hero-container {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* 4. Quitamos el padding lateral del texto para que no empuje el contenido */
+    .product-content-left {
+        padding: 20px;
+        text-align: center;
+        z-index: 20; /* Lo ponemos por encima para que sea legible */
+    }
+
+    .product-description {
+        max-width: 90%;
+        margin: 0 auto;
+        font-size: 1rem;
+    }
+
+    /* 5. HACEMOS LAS CARTAS RESPONSIVAS */
+    .cards-stack-container {
+        height: 50vh; /* Reducimos el alto del contenedor en móvil */
+        margin-top: 20px;
+    }
+
+    .card {
+        /* IMPORTANTE: Cambiamos medidas fijas (600px) por relativas */
+        width: 85vw;  /* La carta ocupa el 85% del ancho del móvil */
+        height: 55vh; /* Ajustamos el alto para que no tape todo el texto */
+        max-width: none;
+    }
+
+    /* 6. Ajustamos el botón para que no sea gigante en móvil */
+    .button-1 {
+        transform: scale(0.8); /* Lo encogemos un poco */
+    }
+}
+
+/* Ajuste extra para móviles muy pequeños */
+@media (max-width: 480px) {
+    .product-title {
+        font-size: 20vw;
+    }
+    
+    .card {
+        width: 90vw;
+        height: 50vh;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- SHOWROOM SECTION --- */
+
+.showroom-main-wrapper {
+    padding: 250px 0px 250px 0px;
+}
+.showroom-section {
+    position: relative;
+    padding: 20px;
+    background-image: url('/assets/img/img-showroom.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+        url('/assets/img/img-showroom.jpg');
+}
+
+.showroom-container {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.showroom-content {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, Acción a la derecha */
+    align-items: center;            /* Centrado vertical perfecto entre ambos */
+    max-width: 100%;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.showroom-headline {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
+    margin-bottom: 20px;
+    color: white; 
+}
+
+.showroom-description {
+    max-width: 500px;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: white;
+}
+
+/* --- CONTENEDOR DEL BOTÓN --- */
+.showroom-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- BOTÓN (PROTEGIDO PARA NO DEFORMARSE) --- */
+.btn-icon-only {
+    /* Usamos min/max para que no mute */
+    width: 3rem !important;
+    height: 3rem !important;
+    min-width: 3rem; 
+    min-height: 3rem;
+    
+    border-radius: 4rem !important; /* Círculo perfecto */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--negro-mate);
+    padding: 0 !important;
+    overflow: hidden;
+    flex-shrink: 0; /* Evita que el flex padre lo aplaste */
+}
+
+.button-icon-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(1);
+    display: block;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .showroom-section {
+        padding: 60px 20px;
+    }
+
+    .showroom-content {
+        flex-direction: column; /* Apilado en móvil */
+        align-items: flex-start; 
+        gap: 40px;
+    }
+
+    .showroom-headline {
+        /* Reducción de tamaño para móvil */
+        font-size: 2.2rem !important; 
+        line-height: 1.1;
+    }
+
+    .showroom-action {
+        width: 100%;
+        justify-content: flex-start; /* Botón a la izquierda en móvil */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*CAROUSEL*/
+
+
+.c-3d-root {
+    display: grid;
+    height: 100vh;
+    background: #ffffff;
+    overflow: hidden;
+    place-items: center;
+}
+
+.c-3d-scene {
+    display: grid;
+    perspective: 40em; 
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    mask: linear-gradient(90deg, #0000, #000 10% 90%, #0000);
+    -webkit-mask: linear-gradient(90deg, #0000, #000 10% 90%, #0000);
+}
+
+.c-3d-grid {
+    display: grid;
+    transform-style: preserve-3d;
+    transform: scaleX(2) rotateY(var(--rotation, 0deg)); 
+    cursor: grab;
+    user-select: none;
+    /* Este transition es la clave del movimiento smooth mientras arrastras */
+    transition: transform 0.4s cubic-bezier(0.1, 0.5, 0.2, 1);
+}
+
+.c-3d-grid:active {
+    cursor: grabbing;
+}
+
+.c-3d-card {
+    --w: 70em; 
+    --ba: calc(360deg / var(--n)); 
+    grid-area: 1 / 1;
+    width: var(--w);
+    aspect-ratio: 16 / 10; 
+    backface-visibility: hidden;
+    transform: 
+        rotateY(calc(var(--i) * var(--ba))) 
+        translateZ(-25em) 
+        scaleX(0.5); /* Corregido a 0.5 para scaleX(2) */
+}
+
+/* --- ESTILO INTERIOR CON IMAGEN --- */
+.c-3d-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    /* CENTRADO DE IMAGEN */
+    background-size: cover;      /* Rellena todo el espacio sin deformar */
+    background-position: center; /* Centra la foto */
+    background-repeat: no-repeat;
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2.5em;
+    padding: 3.5em;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    
+    position: relative; /* Necesario para el overlay */
+    overflow: hidden;   /* Mantiene el overlay dentro de los bordes redondeados */
+}
+
+/* OVERLAY OSCURO PARA LEGIBILIDAD */
+.c-3d-inner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* Degradado de transparente a negro para que el texto resalte */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+}
+
+/* ASEGURAR QUE EL TEXTO ESTÉ POR ENCIMA */
+.c-3d-title, 
+.c-3d-bottom {
+    position: relative;
+    z-index: 2;
+}
+
+.c-3d-title {
+    margin: 0;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: var(--fs-h1);
+    font-weight: 300;
+}
+
+.c-3d-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.c-3d-desc {
+    margin: 0;
+    font-size: var(--fs-sub-2);
+    line-height: var(--lh-sub-2);
+    color: #ffffff; /* Si no carga tu variable, aseguramos blanco */
+    max-width: 65%;
+}
+
+.c-3d-btn {
+    width: 2.5em;
+    height: 2.5em;
+    background: #ffffff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    transition: 0.4s ease;
+}
+
+.c-3d-root:hover .c-3d-grid {
+    animation-play-state: paused;
+}
+
+
+
+
+
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Ajuste general de escala para pantallas grandes (Desktop standard) */
+@media (max-width: 1440px) {
+    .c-3d-card {
+        --w: 60em; /* Bajamos un poco el ancho */
+    }
+}
+
+/* Tablets (iPad, etc.) */
+@media (max-width: 1024px) {
+    .c-3d-scene {
+        perspective: 50em; /* Aumentamos perspectiva para ver más profundidad */
+    }
+    .c-3d-card {
+        --w: 55em; 
+        transform: rotateY(calc(var(--i) * var(--ba))) translateZ(-20em) scaleX(0.5);
+    }
+    .c-3d-title { font-size: 2.5em; }
+    .c-3d-desc { max-width: 80%; }
+}
+
+/* Móviles (iPhone, Android) */
+@media (max-width: 768px) {
+    .c-3d-root {
+        font-size: 10px; /* Reducimos la base para que el 'em' sea más pequeño */
+    }
+    
+    .c-3d-grid {
+        transform: scaleX(1.4) rotateY(var(--rotation, 0deg)); /* Menos óvalo para que quepan */
+    }
+    
+    .c-3d-card {
+        --w: 30em; /* Cartas mucho más estrechas */
+        aspect-ratio: 1 / 1.2; /* Formato más vertical para móvil */
+        transform: 
+            rotateY(calc(var(--i) * var(--ba))) 
+            translateZ(-15em) /* Radio más pequeño para que no se salgan */
+            scaleX(0.71); /* Inverso de 1.4 aprox */
+    }
+
+    .c-3d-inner {
+        padding: 2em;
+        border-radius: 1.5em;
+    }
+
+    .c-3d-title { 
+        font-size: 2.2em; 
+        line-height: 1.2;
+    }
+
+    .c-3d-desc { 
+        display: none; /* En móvil es mejor quitar la descripción larga para limpiar */
+    }
+
+    .c-3d-btn {
+        width: 2em;
+        height: 2em;
+        font-size: 2em;
+    }
+}
+
+/* Soporte para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .c-3d-root { font-size: 8px; }
+    .c-3d-card { --w: 28em; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- NUEVA CLASE PARA SEPARAR DEL RESTO DE LA WEB --- */
+.comunidad-wrapper {
+    width: 100%;
+    /* Ajusta estos valores para separar esta sección de la anterior y la siguiente */
+    padding: 250px 0px 250px 0px; 
+    background: transparent; /* Para que no interfiera con el gris de dentro */
+}
+
+.community-section {
+    position: relative;
+    width: 100%;
+    /* Padding interno para que el contenido no pegue a los bordes del bloque gris */
+    padding: 60px 0px 100px 0px; 
+    background: var(--blanco-puro);
+    overflow: hidden;
+    /* Si quieres bordes redondeados en el bloque gris, añádelo aquí */
+    /* border-radius: 2rem; */
+}
+
+/* Cuadrícula con desvanecimiento lineal en los 4 lados */
+.grid-background {
+    position: absolute;
+    inset: 0;
+    background-size: 50px 50px;
+    background-image: 
+        linear-gradient(to right, var(--blanco-acc-2) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--blanco-acc-2) 1px, transparent 1px);
+    
+    -webkit-mask-image: 
+        linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+        linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: 
+        linear-gradient(to bottom, transparent, black 10%, black 90%, transparent),
+        linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    z-index: 1;
+}
+
+.community-header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.community-title {
+    font-family: "FunnelDisplay"; 
+    font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--verde-oliva);
+}
+
+.community-intro {
+    font-family: "AvenirNext";
+    font-size: var(--fs-sub-2);
+    line-height: var(--lh-sub-2);
+    text-align: center;
+    color: var(--negro-acc-4);
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.community-gallery {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    /* Ajustado a tu UI Kit de 8 columnas */
+    grid-template-columns: repeat(8, 1fr);
+    /* Gap estrecho y márgenes negativos en items acortan el scroll */
+    row-gap: 15px; 
+    column-gap: 15px;
+    max-width: 96vw;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    width: 100%; 
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.4, 1.5, 0.66, 1);
+    justify-self: center;
+}
+
+/* --- MAPA DE POSICIONES 8 COLUMNAS --- */
+
+/* Fila 1 */
+.gallery-item:nth-child(1)  { grid-column: 3 / span 1; margin-top: -2rem; }
+.gallery-item:nth-child(2)  { grid-column: 6 / span 2; margin-top: -2rem; }
+
+/* Fila 2 (Apretadas hacia arriba con margen negativo) */
+.gallery-item:nth-child(3)  { grid-column: 1 / span 2; margin-top: -10rem; } 
+.gallery-item:nth-child(4)  { grid-column: 4 / span 1; margin-top: -5rem; }
+.gallery-item:nth-child(5)  { grid-column: 8 / span 1; margin-top: -3rem; }
+
+/* Fila 3 */
+.gallery-item:nth-child(6)  { grid-column: 5 / span 1; margin-top: -6rem; }
+.gallery-item:nth-child(7)  { grid-column: 7 / span 2; margin-top: -3rem; }
+
+/* Fila 4 */
+.gallery-item:nth-child(8)  { grid-column: 2 / span 2; margin-top: -20rem; }
+.gallery-item:nth-child(9)  { grid-column: 4 / span 1; margin-top: -10rem; }
+.gallery-item:nth-child(10) { grid-column: 7 / span 1; margin-top: 2rem; }
+
+/* Fila 5 */
+.gallery-item:nth-child(11) { grid-column: 3 / span 1; margin-top: -9rem; }
+.gallery-item:nth-child(12) { grid-column: 5 / span 2; margin-top: -3rem; }
+.gallery-item:nth-child(13) { grid-column: 8 / span 1; margin-top: 7rem; }
+
+/* Fila 6 */
+.gallery-item:nth-child(14) { grid-column: 1 / span 2; margin-top: -18rem; }
+.gallery-item:nth-child(15) { grid-column: 4 / span 1; margin-top: -10rem; }
+
+/* Estado Animado */
+.gallery-item.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+
+
+/* --- RESPONSIVE COMUNIDAD --- */
+
+@media (max-width: 1024px) {
+    .community-gallery {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en tablets */
+    }
+    /* Reset de márgenes negativos para tablets */
+    .gallery-item { margin-top: 0 !important; }
+}
+
+@media (max-width: 600px) {
+    .comunidad-wrapper {
+        padding-bottom: 100px; /* Reducimos el espacio exagerado de 500px */
+    }
+
+    .community-section {
+        padding: 60px 15px; /* Menos padding lateral para ganar espacio */
+    }
+
+    .community-title {
+        font-size: 2.5rem; /* Ajuste manual si var(--fs-h1) es gigante */
+        line-height: 1.1;
+    }
+
+    .community-intro {
+        font-size: 1rem;
+        padding: 0 10px;
+        margin-bottom: 30px;
+    }
+
+    .community-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil para que se vean GRANDES */
+        gap: 15px;
+        max-width: 100%;
+    }
+
+    /* Anulamos TODAS las posiciones específicas de escritorio */
+    .gallery-item {
+        grid-column: auto / auto !important; 
+        margin-top: 0 !important;
+        opacity: 1; /* Por si el JS de scroll no carga bien, que se vean */
+        transform: scale(1);
+    }
+
+    /* Opcional: Si quieres que alguna imagen destaque ocupando 2 columnas */
+    .gallery-item:nth-child(3),
+    .gallery-item:nth-child(8) {
+        grid-column: span 2 !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- MATERIALS SECTION --- */
+.materials-section {
+    position: relative;
+    padding: 20px 0px;
+    background-image: url('/assets/img/img-materials.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+        url('/assets/img/img-materials.jpg');
+}
+
+.materials-container {
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+}
+
+.materials-content {
+    display: flex;
+    justify-content: space-between; /* Texto a la izquierda, Acción a la derecha */
+    align-items: center;            /* Centrado vertical perfecto entre ambos */
+    max-width: 100%;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.materials-headline {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: var(--fs-h1);
+    line-height: var(--lh-h1);
+    margin-bottom: 20px;
+    color: white; 
+}
+
+.materials-description {
+    max-width: 500px;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: white;
+}
+
+/* --- CONTENEDOR DEL BOTÓN --- */
+.materials-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- BOTÓN (PROTEGIDO PARA NO DEFORMARSE) --- */
+.btn-icon-only {
+    /* Usamos min/max para que no mute */
+    width: 3rem !important;
+    height: 3rem !important;
+    min-width: 3rem; 
+    min-height: 3rem;
+    
+    border-radius: 4rem !important; /* Círculo perfecto */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--negro-mate);
+    padding: 0 !important;
+    overflow: hidden;
+    flex-shrink: 0; /* Evita que el flex padre lo aplaste */
+}
+
+.button-icon-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    filter: invert(1);
+    display: block;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .materials-section {
+        padding: 60px 20px;
+    }
+
+    .materials-content {
+        flex-direction: column; /* Apilado en móvil */
+        align-items: flex-start; 
+        gap: 40px;
+    }
+
+    .materials-headline {
+        /* Reducción de tamaño para móvil */
+        font-size: 2.2rem !important; 
+        line-height: 1.1;
+    }
+
+    .materials-action {
+        width: 100%;
+        justify-content: flex-start; /* Botón a la izquierda en móvil */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-footer {
+    background-color: var(--negro-acc-1);
+    padding: 120px 20px 20px 20px; /* Margen lateral de 20px (40px total) */
     font-family: 'AvenirNext', sans-serif;
 }
 
-h1, h2, h3 {
-    font-family: 'FunnelDisplay', sans-serif;
+/* Logo Responsivo */
+.footer-logo-header {
+    width: 100%;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
+.massive-logo-img {
+    width: 100%; /* Tamaño completo menos el padding del footer */
+    height: auto;
+    filter: invert(1);
+    opacity: 1;
+}
+
+/* Grid Responsivo */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 1024px) {
+    /* Mantenemos 2 columnas en tablets */
+    .footer-grid { grid-template-columns: repeat(2, 1fr); } 
+}
+
+@media (max-width: 600px) {
+    /* CAMBIO AQUÍ: Ahora también en móvil se verán 2 columnas */
+    .footer-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 2rem; /* Reducimos un poco el gap para que no se amontone en pantallas pequeñas */
+    }
+    
+    .footer-status-bar { 
+        flex-direction: column; 
+        gap: 1rem; 
+    }
+
+    
+}
+
+.footer-title {
+    display: block; /* Para que se comporte como el h4 original */
+    font-size: var(--fs-sub-2);
+    color: var(--blanco-puro);
+    margin-bottom: 1rem;
+    /* Añade aquí el font-weight o transform que quieras */
+}
+
+/* Esto arregla los enlaces morados */
+.footer-col ul { 
+    list-style: none; 
+    padding: 0; 
+}
+
+.footer-col ul li { 
+    margin-bottom: 1rem; 
+}
+
+.footer-col ul li a {
+    color: var(--negro-acc-4); /* Vuelven a su color original */
+    text-decoration: none;
+    font-size: var(--fs-body);
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover { 
+    color: var(--blanco-puro); /* Color blanco al pasar el ratón */
+}
+.footer-col ul li a:hover { color: var(--blanco-puro); }
+
+/* Newsletter con Botón Redondo y SVG */
+.c-newsletter_inner {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--negro-acc-4);
+    padding-bottom: 0.5rem;
+    gap: 1rem;
+}
+
+.c-newsletter_input {
+    background: none;
+    border: none;
+    color: var(--blanco-puro);
+    flex-grow: 1;
+    outline: none;
+    font-size: var(--fs-body);
+}
+
+.c-button-round {
+    background: var(--blanco-acc-4);
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Evita que el botón se deforme */
+}
+
+.c-button-round:hover {
+    background: var(--blanco-puro);
+    transform: scale(1.1);
+}
+
+.svg-icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--negro-acc-4);
+}
+
+/* Redes y Status Bar */
+.social-icons { 
+    display: flex; 
+    gap: 1rem; 
+    margin-top: 2rem; 
+    align-items: center; 
+}
+
+.social-link { 
+    color: var(--negro-acc-4); 
+    font-size: 1.5rem; 
+    transition: all 0.3s ease; 
+    display: inline-block;
+    text-decoration: none;
+}
+
+.social-link:hover { 
+    color: var(--blanco-puro); 
+    transform: scale(1.1);
+}
+.footer-status-bar {
+    display: flex;
+    gap: 2rem;
+    font-size: var(--fs-caption);
+    color: var(--negro-acc-4);
+    margin-bottom: 2rem;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #00ff88;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 5px #00ff88;
+}
+
+.footer-divider { border: 0; border-top: 1px solid var(--negro-acc-4); margin-bottom: 2rem; }
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Alinea los textos al fondo del contenedor */
+    font-size: var(--fs-caption);
+    color: var(--negro-acc-4);
+    margin-bottom: 20px; /* Margen de seguridad para no tocar el límite de pantalla */
+}
+
+.legal { 
+    display: flex; 
+    gap: 2rem; 
+    align-items: flex-end; /* Asegura que la sub-lista legal también alinee abajo */
+}
+
+.legal-links a { 
+    color: var(--negro-acc-4); 
+    text-decoration: none; 
+    margin-left: 1rem; 
+}
+
+/* Ajuste para móvil: para que no se amontone si el texto es largo */
+@media (max-width: 600px) {
+    .footer-bottom {
+        flex-direction: column; /* Apila en móvil para evitar cortes */
+        align-items: flex-start; /* Alinea a la izquierda en móvil */
+        gap: 15px;
+    }
+    
+    .legal-links a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+}
+
+.main-header {
+    /* ... tus otros estilos (background, position: fixed, etc) ... */
+    
+    /* Esto hará que cualquier cambio en transform u opacity sea suave */
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.5s ease-out;
 }
