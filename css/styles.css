@@ -1508,7 +1508,7 @@ model-viewer {
 .materials-section {
     position: relative;
     padding: 20px 0px;
-    background-image: url('/assets/img/img-materials.jpg');
+    background-image: url('../assets/img/img-materials.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1518,7 +1518,7 @@ model-viewer {
 
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-        url('/assets/img/img-materials.jpg');
+        url('../assets/img/img-materials.jpg');
 }
 
 .materials-container {
