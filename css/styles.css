@@ -1666,7 +1666,7 @@ model-viewer {
 
 .main-footer {
     background-color: var(--negro-acc-1);
-    padding: 120px 0px 0px 0px; /* Margen lateral de 20px (40px total) */
+    padding: 120px 20px 20px 20px; /* Margen lateral de 20px (40px total) */
     font-family: 'AvenirNext', sans-serif;
 }
 

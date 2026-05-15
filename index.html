@@ -906,41 +906,47 @@ window.addEventListener('scroll', () => {
     let currentRotation = 0; 
     let dragRotation = 0;    
 
-    // VELOCIDAD: Bájalo más (ej: 0.1) si lo quieres aún más lento
     const sensitivity = 0.15; 
 
-    window.addEventListener('mousedown', (e) => {
+    // --- FUNCIONES UNIFICADAS ---
+    function start(xValue) {
         isDragging = true;
-        startX = e.clientX;
-        // Ya no quitamos el transition, dejamos que el CSS haga el trabajo sucio
-    });
+        startX = xValue;
+    }
 
-    window.addEventListener('mousemove', (e) => {
+    function move(xValue) {
         if (!isDragging) return;
-
-        const deltaX = e.clientX - startX;
+        const deltaX = xValue - startX;
         dragRotation = deltaX * sensitivity;
-        
-        // Aplicamos la rotación
         grid.style.setProperty('--rotation', `${currentRotation - dragRotation}deg`);
-    });
+    }
 
-    window.addEventListener('mouseup', () => {
+    function end() {
         if (!isDragging) return;
         isDragging = false;
-        
-        // Guardamos la posición final
         currentRotation -= dragRotation;
-        dragRotation = 0; // Reseteamos el tramo actual
-    });
+        dragRotation = 0;
+    }
 
-    window.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            isDragging = false;
-            currentRotation -= dragRotation;
-            dragRotation = 0;
-        }
-    });
+    // --- EVENTOS DE RATÓN (PC) ---
+    window.addEventListener('mousedown', (e) => start(e.clientX));
+    window.addEventListener('mousemove', (e) => move(e.clientX));
+    window.addEventListener('mouseup', end);
+
+    // --- EVENTOS TÁCTILES (MÓVIL) ---
+    window.addEventListener('touchstart', (e) => {
+        // Usamos e.touches[0] para pillar el primer dedo que toca
+        start(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+        move(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener('touchend', end);
+
+    // Seguridad extra
+    window.addEventListener('mouseleave', end);
 </script>
 
 
