@@ -144,19 +144,24 @@
 
     <div class="hero-3d-model">
         <model-viewer 
-            id="tystaModel"
-            src="assets/3d/modelo.glb" 
-            alt="Modelo 3D Tysta"
-            shadow-intensity="1" 
-            camera-controls 
-            disable-zoom
-            auto-rotate
-            interaction-prompt="none"
-            bounds="tight" 
-            camera-orbit="0deg 75deg 60%" 
-            min-camera-orbit="auto auto 5%"
-            exposure="1.2">
-        </model-viewer>
+    id="tystaModel"
+    src="assets/3d/modelo.glb" 
+    alt="Modelo 3D Tysta"
+    shadow-intensity="1" 
+    camera-controls 
+    disable-zoom
+    auto-rotate
+    interaction-prompt="none"
+    interaction-policy="allow-when-focused" 
+    touch-action="pan-y"
+    bounds="tight" 
+    camera-orbit="0deg 75deg 60%"
+    /* --- CONFIGURACIÓN DE SENSIBILIDAD --- */
+    orbit-sensitivity="0.3" 
+    interpolation-decay="200"
+    /* ------------------------------------- */
+    exposure="1.2">
+</model-viewer>
     </div>
 
     <div class="hero-slogan">
@@ -766,20 +771,25 @@
 
 
 
-
+<!--HERO-->
 
     <script>
     const modelViewer = document.querySelector('#tystaModel');
 
-    window.addEventListener('mousemove', (e) => {
-        // Cálculo de posición del ratón
-        const x = (e.clientX / window.innerWidth - 0.5) * 2;
-        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+    if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener('mousemove', (e) => {
+            // Si el usuario no está tocando/arrastrando el modelo, aplicamos el seguimiento
+            const x = (e.clientX / window.innerWidth - 0.5) * 2;
+            const y = (e.clientY / window.innerHeight - 0.5) * 2;
+            
+            // Reducimos un poco el rango para que sea sutil
+            modelViewer.cameraOrbit = `${x * 15}deg ${75 + (y * 5)}deg 60%`;
+        });
+    }
 
-        // Orbit: Azimuth (giro lateral), Inclinación (arriba/abajo), y RADIO (Zoom)
-        // He cambiado el 105% final por 40% para que no se aleje
-        modelViewer.cameraOrbit = `${x * 20}deg ${75 + (y * 10)}deg 60%`;
-    });
+    // Al tocar el modelo en móvil o PC, desactivamos el auto-rotate para siempre
+    modelViewer.addEventListener('mousedown', () => modelViewer.autoRotate = false);
+    modelViewer.addEventListener('touchstart', () => modelViewer.autoRotate = false);
 </script>
 
 

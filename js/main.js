@@ -1,4 +1,10 @@
-// 1. Activamos el plugin de scroll
+
+
+
+
+
+// TEXTO STATEMENT
+
 gsap.registerPlugin(ScrollTrigger);
 
 // 2. Creamos la animación
